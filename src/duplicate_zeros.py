@@ -42,6 +42,9 @@ class Solution:
         based on 0s found in the array and their duplication.
         Looping over the original array would be conceptually wrong: only a while loop over the array's indexes is needed
         as you can replace the j-th value with the i-th array's value to properly shift the elements.
+
+        The filling of the array goes backward: you start from the end of the array and you are going back to the
+        beginning of the array.
         """
         # Instantiate a virtual length arr
         virtual_length_arr = 0
