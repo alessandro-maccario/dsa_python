@@ -63,13 +63,20 @@ class Solution:
         # 2. Phase 2: iterate over the indexes of the original arr and replace the array values depending if arr[i] == 0 or not; update the indexes accordingly
         while i >= 0 and j >= 0:
             if arr[i] != 0:
-                arr[j] = arr[i]
+                # Check if j is virtually outside the bounding box of the array. If it is, just decrease i and j and continue with the next step. If not, then replace.
+                if j < len(arr):
+                    arr[j] = arr[i]
                 i -= 1
                 j -= 1
             else:
+                # Check if j is virtually outside the bounding box of the array. If it is, and the value is == 0, then replace the j-1 and j-2 element of the list, then decrease.
+                if j > len(arr) - 1:
+                    arr[j - 1] = 0
+                    arr[j - 2] = 0
+                if j < len(arr):
+                    arr[j] = 0
+                    arr[j - 1] = 0
                 i -= 1
-                arr[j] = 0
-                arr[j - 1] = 0
                 j -= 2
 
         return
