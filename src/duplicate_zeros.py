@@ -38,10 +38,10 @@ class Solution:
         The i is the last possible elements in arr[i] that will be considered as valid value before exceeding the length of the array.
         The j will be the last writable position, before exceeding the length of the array.
 
-        2. Phase 2: in phase 2, while i and j >=0, you can loop simulate the shifting values and decreasing i and j accordingly,
+        2. Phase 2: in phase 2, while i and j >=0, you can simulate the shifting values and decrease i and j accordingly,
         based on 0s found in the array and their duplication.
         Looping over the original array would be conceptually wrong: only a while loop over the array's indexes is needed
-        as you can replace the j-th value with the i-th array's value to properly shift the elements.
+        as you can replace the j-th value with the i-th array's value to properly shift the elements to the right.
 
         The filling of the array goes backward: you start from the end of the array and you are going back to the
         beginning of the array.
