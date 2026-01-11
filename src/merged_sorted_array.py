@@ -1,3 +1,10 @@
+"""
+Merged Sorted Array
+
+Reference:
+- https://algo.monster/liteproblems/88
+"""
+
 from typing import List
 
 # Inputs
