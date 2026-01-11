@@ -61,6 +61,8 @@ class Solution:
                 break
 
         # 2. Phase 2: iterate over the indexes of the original arr and replace the array values depending if arr[i] == 0 or not; update the indexes accordingly
+        # The use of a while loop instead of a for loop is crucial: you are not iterating over the values of the array,
+        # but on the pointers that point to the positions in the array.
         while i >= 0 and j >= 0:
             if arr[i] != 0:
                 # Check if j is virtually outside the bounding box of the array. If it is, just decrease i and j and continue with the next step. If not, then replace.
