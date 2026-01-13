@@ -31,17 +31,6 @@ val = 3
 
 
 class Solution:
-    """
-    Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
-    The order of the elements may be changed. Then return the number of elements in nums which are NOT equal to val.
-
-    Consider the number of elements in nums which are not equal to val be k, to get accepted,
-    you need to do the following things:
-    - Change the array nums such that the first k elements of nums contain the elements which are not equal to val.
-    The remaining elements of nums are not important as well as the size of nums.
-    - Return k.
-    """
-
     def removeElement(self, nums: List[int], val: int) -> int:
         """
         Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
@@ -71,23 +60,6 @@ class Solution:
         i = 0  # read pointer
 
         while i < len(nums):
-            # print(
-            #     "i:",
-            #     i,
-            #     "|",
-            #     "nums[i]:",
-            #     nums[i],
-            #     "|",
-            #     "len(nums):",
-            #     len(nums),
-            #     "|",
-            #     "Counter:",
-            #     k,
-            #     "Equality:",
-            #     nums[i] == val,
-            #     "|",
-            #     nums,
-            # )
             if nums[i] != val:
                 # move the next element to be in the position of the element == val in order to replace the val in the list
                 # Count the elements that are not equal to val
@@ -98,7 +70,6 @@ class Solution:
                 # if the current value is different than the specified val, just increase i
                 i += 1
 
-        # return (f"Final list: {nums}", f"Counter: {k}")
         return k
 
 
