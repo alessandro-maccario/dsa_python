@@ -1,4 +1,4 @@
-class NodeDoublyLinkedList:
+class Node:
     def __init__(self, value):
         # actual value of the node
         self.value = value
@@ -20,7 +20,7 @@ class DoublyLinkedList:
         current_node = self.head
 
         while current_node:
-            print(current_node.value, end=" -> ")
+            print(current_node.value, end=" ⇄ ")
             current_node = current_node.next
 
         print("null")
@@ -38,7 +38,7 @@ class DoublyLinkedList:
             # I always need to traverse the linked list starting from the head
             # self.head → [5] ⇄ [9] ← self.tail
             # 1. Create the new node that need to be placed at the end of the list
-            last_node = NodeDoublyLinkedList(value=value)
+            last_node = Node(value=value)
             # 2. This means that you are setting the last_node.previous to be referencing the same NODE that the self.tail is referencing. Note: we are talking about references/pointers in here
             # self.head → [5] ⇄ [10] ← self.tail
             #                     ↑
@@ -49,6 +49,41 @@ class DoublyLinkedList:
             # 4. Move the tail itself to point to the newly created node
             self.tail = last_node
 
+    def prepend(self, value):
+        """
+        Prepend a value to the doubly linked list.
+
+        Parameters
+        ----------
+        value : int
+            An integer to be appended to the doubly linked list.
+        """
+        # edge case: if the head is None
+        if self.head is None:
+            self.head = Node(value=value)
+            self.tail = self.head
+        else:
+            # 1. Create the new node to prepend
+            new_node = Node(value=value)
+            # 2. Let the next pointer of the new node point to the same reference (the node) that the head is currently pointing to
+            new_node.next = self.head
+            # 2. Let the head previous pointer point to the new node
+            self.head.previous = new_node
+            # 3. Let the head element point to the new node
+            self.head = new_node
+
+    # TODO: to be done
+    def insert(self, value):
+        """
+        Insert a value in a doubly linked list.
+
+        Parameters
+        ----------
+        value : int
+            Value to be inserted.
+        """
+        pass
+
 
 doubly_linked_list = DoublyLinkedList()
 doubly_linked_list.append(value=2)
@@ -56,4 +91,6 @@ doubly_linked_list.append(value=5)
 doubly_linked_list.append(value=19)
 doubly_linked_list.append(value=20)
 doubly_linked_list.append(value=78)
+doubly_linked_list.prepend(value=100)
+doubly_linked_list.prepend(value=500)
 doubly_linked_list.traverse()
