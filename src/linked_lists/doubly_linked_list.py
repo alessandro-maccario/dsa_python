@@ -133,6 +133,28 @@ class DoublyLinkedList:
         new_node.previous = current_node.next
         current_node.next = new_node
 
+    def delete(self, value):
+        """
+        Delete a value from the doubly linked list.
+
+        Parameters
+        ----------
+        value : int
+            An integer to be deleted.
+        """
+        current_node = self.head
+        # 1. if the element to be deleted is only the head
+
+        # 2. if the element to be deleted is the tail
+
+        # 3. if the element to be deleted is anywhere in the linked list
+        while current_node.next:
+            if current_node.next.value != value:
+                current_node = current_node.next
+            else:
+                current_node.next = current_node.next.next
+                return
+
 
 doubly_linked_list = DoublyLinkedList()
 doubly_linked_list.append(value=2)
@@ -147,3 +169,5 @@ print(doubly_linked_list.length())
 doubly_linked_list.insert(index=2, value=-3)
 doubly_linked_list.traverse()
 print(doubly_linked_list.length())
+doubly_linked_list.delete(value=2)
+doubly_linked_list.traverse()
