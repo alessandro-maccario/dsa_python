@@ -98,18 +98,40 @@ class DoublyLinkedList:
         value : int
             Value to be inserted.
         """
+        length = self.length()
+        print("Index is:", index)
+        if index > length - 1 or index < 0:
+            return ValueError("Index Out of bounds")
+
+        current_node = self.head
         # if you want to insert a value at index 0, then prepend
         if index == 0:
             self.prepend(value=value)
+            return
 
         # In all of the other cases, you need to insert a value somewhere in the middle of the linked list
 
         # if you want to insert a value at the last position of the doubly linked list (for this
         # you would have to traverse the doubly linked list), then it's append.
-        # TODO: would you need to create a length() method to know if the index is the same as the length of the doubly linked list?
+
+        # Insert at the end of the Doubly Linked List using the append method
+        if length == index:
+            for i in range(length):
+                if current_node.next is None:
+                    self.append(value=value)
+                current_node = current_node.next
+            return
+
+        # Insert at a specific index: continue to update the current_node pointer until index - 1 has been reached
         for i in range(index - 1):
-            # go through the doubly linked list until the previous node, then do the switch
-            pass
+            current_node = current_node.next
+        # go through the doubly linked list until the previous node, then do the switch
+        new_node = Node(value=value)
+        new_node.next = (
+            current_node.next
+        )  # the new_node.next will point at the same element as the currrent_node.next
+        new_node.previous = current_node.next
+        current_node.next = new_node
 
 
 doubly_linked_list = DoublyLinkedList()
@@ -120,5 +142,8 @@ doubly_linked_list.append(value=20)
 doubly_linked_list.append(value=78)
 doubly_linked_list.prepend(value=100)
 doubly_linked_list.prepend(value=500)
+doubly_linked_list.traverse()
+print(doubly_linked_list.length())
+doubly_linked_list.insert(index=2, value=-3)
 doubly_linked_list.traverse()
 print(doubly_linked_list.length())
