@@ -25,6 +25,19 @@ class DoublyLinkedList:
 
         print("null")
 
+    def length(self):
+        """
+        Count the length of the doubly linked list.
+        """
+        counter = 0
+        current_node = self.head
+
+        while current_node:
+            counter += 1
+            current_node = current_node.next
+
+        return counter
+
     def append(self, value):
         if self.head is None:
             self.head = Node(value=value)
@@ -73,16 +86,30 @@ class DoublyLinkedList:
             self.head = new_node
 
     # TODO: to be done
-    def insert(self, value):
+    def insert(self, index, value):
         """
         Insert a value in a doubly linked list.
 
         Parameters
         ----------
+        index : int
+            The index at which the value will be inserted.
+
         value : int
             Value to be inserted.
         """
-        pass
+        # if you want to insert a value at index 0, then prepend
+        if index == 0:
+            self.prepend(value=value)
+
+        # In all of the other cases, you need to insert a value somewhere in the middle of the linked list
+
+        # if you want to insert a value at the last position of the doubly linked list (for this
+        # you would have to traverse the doubly linked list), then it's append.
+        # TODO: would you need to create a length() method to know if the index is the same as the length of the doubly linked list?
+        for i in range(index - 1):
+            # go through the doubly linked list until the previous node, then do the switch
+            pass
 
 
 doubly_linked_list = DoublyLinkedList()
@@ -94,3 +121,4 @@ doubly_linked_list.append(value=78)
 doubly_linked_list.prepend(value=100)
 doubly_linked_list.prepend(value=500)
 doubly_linked_list.traverse()
+print(doubly_linked_list.length())
