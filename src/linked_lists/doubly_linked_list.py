@@ -143,17 +143,19 @@ class DoublyLinkedList:
             An integer to be deleted.
         """
         current_node = self.head
-        # 1. if the element to be deleted is only the head
-
-        # 2. if the element to be deleted is the tail
-
-        # 3. if the element to be deleted is anywhere in the linked list
-        while current_node.next:
-            if current_node.next.value != value:
-                current_node = current_node.next
-            else:
-                current_node.next = current_node.next.next
-                return
+        # 1. if the element to be deleted is only the self.head
+        if current_node.value != value:
+            # 3. if the element to be deleted is anywhere in the linked list or the self.tail
+            while current_node.next:
+                if current_node.next.value != value:
+                    current_node = current_node.next
+                else:
+                    current_node.next = current_node.next.next
+                    return
+        else:
+            # the element to be removed is the self.head
+            current_node.next = self.head.next
+            self.head = current_node.next
 
 
 doubly_linked_list = DoublyLinkedList()
@@ -169,5 +171,5 @@ print(doubly_linked_list.length())
 doubly_linked_list.insert(index=2, value=-3)
 doubly_linked_list.traverse()
 print(doubly_linked_list.length())
-doubly_linked_list.delete(value=2)
+doubly_linked_list.delete(value=78)
 doubly_linked_list.traverse()
