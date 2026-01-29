@@ -157,6 +157,42 @@ class DoublyLinkedList:
             current_node.next = self.head.next
             self.head = current_node.next
 
+    def pop(self, value) -> int:
+        """
+        Pop an element from the doubly linked list.
+
+        Parameters
+        ----------
+        value : int
+            A value to be popped from the doubly linked list.
+
+        Returns
+        -------
+        int
+            The popped value.
+        """
+        # temporarily save the value to be popped so that you can return it
+        temp = None
+
+        current_node = self.head
+
+        if current_node.value != value:
+            # if the element to be deleted is anywhere in the linked list or the self.tail
+            while current_node.next:
+                if current_node.next.value != value:
+                    current_node = current_node.next
+                else:
+                    temp = current_node.next.value
+                    current_node.next = current_node.next.next
+                    return temp
+        # if the element to be deleted is only the self.head
+        else:
+            temp = current_node.value
+            # the element to be removed is the self.head
+            current_node.next = self.head.next
+            self.head = current_node.next
+            return temp
+
 
 doubly_linked_list = DoublyLinkedList()
 doubly_linked_list.append(value=2)
@@ -172,4 +208,6 @@ doubly_linked_list.insert(index=2, value=-3)
 doubly_linked_list.traverse()
 print(doubly_linked_list.length())
 doubly_linked_list.delete(value=78)
+doubly_linked_list.traverse()
+print(doubly_linked_list.pop(value=500))
 doubly_linked_list.traverse()
