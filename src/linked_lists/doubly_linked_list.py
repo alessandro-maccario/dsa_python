@@ -193,6 +193,31 @@ class DoublyLinkedList:
             self.head = current_node.next
             return temp
 
+    def get(self, index) -> int:
+        """
+        Get the value at the corresponding index.
+
+        Parameters
+        ----------
+        index : int
+            An integer index between 0 < index < length(doubly_linked_list) - 1
+
+        Returns
+        -------
+        int
+            The integer at the corresponding index.
+        """
+        current_node = self.head
+
+        length = self.length()
+        if index > length - 1 or index < 0:
+            return ValueError("Index Out of bounds")
+
+        while current_node.next:
+            for i in range(index):
+                current_node = current_node.next
+            return current_node.value
+
 
 doubly_linked_list = DoublyLinkedList()
 doubly_linked_list.append(value=2)
@@ -206,8 +231,9 @@ doubly_linked_list.traverse()
 print(doubly_linked_list.length())
 doubly_linked_list.insert(index=2, value=-3)
 doubly_linked_list.traverse()
-print(doubly_linked_list.length())
-doubly_linked_list.delete(value=78)
+# print(doubly_linked_list.length())
+# doubly_linked_list.delete(value=78)
 doubly_linked_list.traverse()
-print(doubly_linked_list.pop(value=500))
-doubly_linked_list.traverse()
+# print(doubly_linked_list.pop(value=500))
+# doubly_linked_list.traverse()
+print(doubly_linked_list.get(index=0))
