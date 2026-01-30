@@ -1,3 +1,9 @@
+"""
+Reference
+---------
+- https://algo.monster/liteproblems/234
+"""
+
 from typing import Optional
 
 
