@@ -52,7 +52,7 @@ class Solution:
         pointer_1 = list1
         # pointer to the second list
         pointer_2 = list2
-        # current pointer to the dummy. It will keep track of the rest of the nodes
+        # current is a pointer to the dummy. It will keep track of the rest of the nodes
         current = dummy
 
         # while both are still not None
@@ -89,15 +89,6 @@ def create_linked_list(values):
 
 
 # Helper function to print a linked list (useful for debugging)
-def print_linked_list(head):
-    values = []
-    current = head
-    while current:
-        values.append(current.val)
-        current = current.next
-    print("Linked List: ", values)
-
-
 def traverse(head):
     """
     Traverse the list and display it.
