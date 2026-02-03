@@ -55,14 +55,15 @@ class Solution:
         #     if word in dict_list2:
         #         # sum up the values from dictionary and idx
         #         word_dict[word] = dict_list2[word] + idx
-
         word_dict = {
-            word: dict_list2[word] + idx  # if the word is found, sum up the indexes
-            for idx, word in enumerate(list1)
-            if word in dict_list2
+            word: dict_list2[word] + idx  # If the word is found, sum up the indexes
+            for idx, word in enumerate(list1)  # for each word in list1
+            if word in dict_list2  # that has been found in dict_list2
         }
 
-        return [k for k, v in word_dict.items() if v == min(word_dict.values())]
+        min_dict_val_word = min(word_dict.values())
+
+        return [word for word, val in word_dict.items() if val == min_dict_val_word]
 
 
 # Test cases
