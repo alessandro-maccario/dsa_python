@@ -7,12 +7,6 @@ Reference
 
 from typing import List
 
-### TEST #################################
-# alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-# for letter in alphabet:
-#     print(ord(letter) - ord('a'))
-##########################################
 
 strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
