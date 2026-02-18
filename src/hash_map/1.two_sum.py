@@ -38,13 +38,14 @@ class Solution:
         Output: [0,1]
 
         """
-        dictionary = {}
-        result = []
+        dictionary = {}  # already seen elements
+        result = []  # list of indexes
 
         for idx, num in enumerate(nums):
             y = target - num
             if y not in dictionary:
                 dictionary[num] = idx
+                print(dictionary)
             else:
                 # If found, append the current index to the result list and the current value index available in the dictionary of already seen elements
                 result.append(idx)
