@@ -64,4 +64,3 @@ class Solution:
 s = "cc"
 solution = Solution()
 print(solution.longestPalindrome(s=s))
-# BUG: currently is wrong because it gives you six
