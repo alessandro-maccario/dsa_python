@@ -75,19 +75,28 @@ class Solution:
         Cases
         -----
         # TODO: are you covering all cases?
-        At the very start of the expression
-        Right after an opening parenthesis (
-        Right after another operator
+        - At the very start of the expression
+        - Right after an opening parenthesis (
+        - Right after another operator
         """
-        # TODO: to be tested!
+        write_output = []
+
         for idx, char in enumerate(s):
+            print(f"idx: {idx} | char: {char}")
             if idx == 0 and char in ("+", "-"):
                 # append a 0 so that the unary becomes a binary operator
-                s = "0" + s
+                write_output.append("0")
+                write_output.append(char)
             elif char == "(" and s[idx + 1] in ("+", "-"):
-                s = s[:idx] + "0" + s[idx:]
+                write_output.append(char)
+                write_output.append("0")
+            elif s[idx - 1] in ("+", "-", "*", "/", "^") and char in ("+", "-"):
+                write_output.append("0")
+                write_output.append(char)
+            else:
+                write_output.append(char)
 
-        return s
+        return "".join(write_output)
 
     def evalRPN(self, tokens: List[str]) -> str:
         """
