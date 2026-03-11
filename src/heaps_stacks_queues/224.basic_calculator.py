@@ -1,6 +1,3 @@
-# continue from 1:48:25
-# https://www.youtube.com/watch?v=zNgAQPlMqdg
-
 from typing import List
 
 
