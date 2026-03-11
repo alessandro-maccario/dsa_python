@@ -25,7 +25,7 @@ class Solution:
         the lowest priority) is not able to kick out from the operators' list the actual "(" which
         should be removed as the last element.
         """
-        bodmas = {"(": 0, "+": 1, "-": 2, "*": 3, "/": 4, "^": 5}
+        bodmas = {"(": 0, "+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
         stack = []
         operators = []
 
@@ -284,6 +284,7 @@ class Solution:
 s = "1-(     -2)"
 s = "1-11"
 s = "(1+(4+5+2)-3)+(6+8)"
+s = "1+2*5/3+6/4*2"
 
 solution = Solution()
 print(solution.calculate(s=s))
