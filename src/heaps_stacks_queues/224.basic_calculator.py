@@ -109,8 +109,8 @@ class Solution:
 
         Parameters
         ----------
-        s : _type_
-            _description_
+        s : str
+            A string where unary operators are still available.
 
         Returns
         -------
