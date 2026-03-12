@@ -207,13 +207,6 @@ class Solution:
         bodmas = ["-", "+", "*", "/", "^"]
         stack = []
 
-        # Handle special cases of unary operators (operators that are attached to only one operand, such as -2).
-        # The way to handle this is to simply add, only for cases in which the operator is a "+" or a "-",
-        # or if the unary operator is at the beginning of the string or if it is in between a "(" and an operand
-        # or right after another operator.
-        # Examples:
-        # 1 - (-2) | (+3 + 1) | +5 - 1
-
         for token in tokens:
             if token not in bodmas:
                 stack.append(int(token))
