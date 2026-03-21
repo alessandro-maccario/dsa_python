@@ -1,15 +1,16 @@
-stack_nge = []
-map_nums2 = {}
+stack_pge = []
+map_nums = {}
 
-nums1 = [4, 1, 2]
-nums2 = [1, 3, 4, 2]
+nums = [5, 3, 4]
 
-for element in nums2:
-    while stack_nge and element <= stack_nge[-1]:
-        map_nums2[element] = stack_nge[-1]
-        stack_nge.pop(-1)
-        break
-    stack_nge.append(element)
+for element in nums:
+    while stack_pge and stack_pge[-1] < element:
+        stack_pge.pop(-1)
 
-output = [map_nums2.get(element, -1) for element in nums1]
+    if stack_pge:
+        map_nums[element] = stack_pge[-1]
+
+    stack_pge.append(element)
+
+output = [map_nums.get(element, -1) for element in nums]
 print(output)
