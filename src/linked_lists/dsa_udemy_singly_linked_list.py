@@ -70,14 +70,13 @@ class LinkedList:
             previous = temp
             temp = temp.next
         else:
-            popped_node = temp
-            previous.next = None
             self.tail = previous
+            self.tail.next = None
 
         # remove 1 to the total length
         self.length -= 1
-        # return the popped node
-        return popped_node
+        # return the last node that was popped from the linked list
+        return temp
 
     def __repr__(self) -> str:
         """
