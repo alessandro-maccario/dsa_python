@@ -53,8 +53,9 @@ class LinkedList:
         # in case the Linked List is empty, cannot pop anything
         if self.length == 0:
             return None
+        # if only one node is available
         elif self.length == 1:
-            # save the element to be popped
+            # save the element to be popped before pointing the head to None
             node = self.head
             self.head = None
             self.tail = None
@@ -102,8 +103,8 @@ linked_list = LinkedList()
 
 # Append a new node
 linked_list.append(value=25)
-linked_list.append(value=40)
-linked_list.append(value=50)
+# linked_list.append(value=40)
+# linked_list.append(value=50)
 # pop and print the value
 print(linked_list.pop().value)
 
