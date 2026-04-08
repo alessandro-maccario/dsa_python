@@ -62,26 +62,17 @@ class LinkedList:
             return node
 
         ##############
+        # Two-Pointer Technique
+        temp = self.head
+        previous = self.head
 
-        node = self.head
-
-        # while the next node is still not None
-        while node.next is not None:
-            # keep track of the previous node
-            current_node = node
-            # print(
-            #     "Current node:",
-            #     current_node.value if current_node is not None else current_node,
-            # )
-            node = node.next
+        while temp.next is not None:
+            previous = temp
+            temp = temp.next
         else:
-            # print("Current node:", node.value if node is not None else node)
-            popped_node = node
-            current_node.next = None
-            self.tail = current_node
-
-            # print("Next node:", node.next if node is not None else node)
-            # print("---------")
+            popped_node = temp
+            previous.next = None
+            self.tail = previous
 
         # remove 1 to the total length
         self.length -= 1
