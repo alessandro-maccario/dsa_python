@@ -79,6 +79,27 @@ class LinkedList:
         # return the last node that was popped from the linked list
         return temp
 
+    def prepend(self, value):
+        """
+        Prepend a value to a Singly Linked List.
+
+        Parameters
+        ----------
+        value : _type_
+            _description_
+        """
+        ##############
+        # Edge cases #
+        ##############
+        pass
+
+        ##################
+        # Standard cases #
+        ##################
+        new_node = Node(value=value)
+        new_node.next = self.head
+        self.head = new_node
+
     def __repr__(self) -> str:
         """
         Create custom representation of the Linked List.
@@ -106,7 +127,8 @@ linked_list.append(value=25)
 # linked_list.append(value=40)
 # linked_list.append(value=50)
 # pop and print the value
-print(linked_list.pop().value)
+# print(linked_list.pop().value)
+print(linked_list.prepend(value=10))
 
 # 4. Check if the new node has been added to the linked list
 print(linked_list)
