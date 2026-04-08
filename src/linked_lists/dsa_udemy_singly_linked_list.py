@@ -34,8 +34,18 @@ class LinkedList:
         return True
 
     def pop(self):
-        # 1. Traverse the Linked list and pop the last element and return it
-        # 2. the previous node will have a .next = None and the tail equal to the previous node
+        """
+        Pop method to pop the last element in a Singly Linked List.
+
+        Approach:
+            1. Traverse the Linked list and pop the last element; return it
+            2. The previous to last node will have a .next = None and the tail will be set equal to the previous node (moving the tail back one node)
+
+        Returns
+        -------
+        int
+            Popped element from the Singly Linked List.
+        """
 
         ##############
         # Edge cases #
@@ -59,19 +69,19 @@ class LinkedList:
         while node.next is not None:
             # keep track of the previous node
             current_node = node
-            print(
-                "Current node:",
-                current_node.value if current_node is not None else current_node,
-            )
+            # print(
+            #     "Current node:",
+            #     current_node.value if current_node is not None else current_node,
+            # )
             node = node.next
         else:
-            print("Current node:", node.value if node is not None else node)
+            # print("Current node:", node.value if node is not None else node)
             popped_node = node
             current_node.next = None
             self.tail = current_node
 
-            print("Next node:", node.next if node is not None else node)
-            print("---------")
+            # print("Next node:", node.next if node is not None else node)
+            # print("---------")
 
         # remove 1 to the total length
         self.length -= 1
