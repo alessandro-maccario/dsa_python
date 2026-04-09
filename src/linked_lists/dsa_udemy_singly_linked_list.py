@@ -85,20 +85,31 @@ class LinkedList:
 
         Parameters
         ----------
-        value : _type_
-            _description_
+        value : int
+            The value to append as a new node at the beginning of the Singly Linked List.
         """
+
+        # Create the new node
+        new_node = Node(value=value)
+
         ##############
         # Edge cases #
         ##############
-        pass
+        # in case the Linked List is empty, the node will create the Singly Linked List
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+            self.tail.next = None
+        else:
+            ##################
+            # Standard cases #
+            ##################
+            new_node.next = self.head
+            self.head = new_node
 
-        ##################
-        # Standard cases #
-        ##################
-        new_node = Node(value=value)
-        new_node.next = self.head
-        self.head = new_node
+        # increment the length by 1
+        self.length += 1
+        return True
 
     def __repr__(self) -> str:
         """
@@ -123,7 +134,7 @@ class LinkedList:
 linked_list = LinkedList()
 
 # Append a new node
-linked_list.append(value=25)
+# linked_list.append(value=25)
 # linked_list.append(value=40)
 # linked_list.append(value=50)
 # pop and print the value
