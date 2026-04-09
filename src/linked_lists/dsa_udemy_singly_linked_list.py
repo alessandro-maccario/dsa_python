@@ -49,7 +49,6 @@ class LinkedList:
 
         ##############
         # Edge cases #
-
         # in case the Linked List is empty, cannot pop anything
         if self.length == 0:
             return None
@@ -59,6 +58,7 @@ class LinkedList:
             node = self.head
             self.head = None
             self.tail = None
+            self.length -= 1
 
             return node
 
@@ -77,7 +77,7 @@ class LinkedList:
         # remove 1 to the total length
         self.length -= 1
         # return the last node that was popped from the linked list
-        return temp
+        return temp if temp is not None else None
 
     def prepend(self, value):
         """
@@ -129,24 +129,42 @@ class LinkedList:
         # if only one node is available
         elif self.length == 1:
             # save the element to be popped before pointing the head to None
-            node = self.head
+            temp = self.head
             self.head = None
             self.tail = None
+            self.length -= 1
 
-            return node
+            return temp
 
         ##################
         # Standard cases #
         ##################
         # Save the node to be popped and to be returned
-        first_node = self.head.value
+        first_node = self.head
         # Point the head to the next node, resulting in removing the the first node
         self.head = self.head.next
+        # detach the first from the rest of the Singly Linked List
+        first_node.next = None
 
         # decrement the counter by 1
         self.length -= 1
 
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+
         return first_node
+
+    # TODO: continue from here
+    def get(self, index):
+        pass
+
+    def print_list(self):
+        node = self.head
+
+        while node is not None:
+            print(node.value, "\n")
+            node = node.next
 
     def __repr__(self) -> str:
         """
@@ -179,6 +197,8 @@ linked_list = LinkedList()
 print(linked_list.append(value=10))
 print(linked_list.append(value=20))
 print(linked_list)
+print(linked_list.pop_first())
+print(linked_list.pop_first())
 print(linked_list.pop_first())
 
 # 4. Check if the new node has been added to the linked list
