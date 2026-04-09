@@ -111,6 +111,43 @@ class LinkedList:
         self.length += 1
         return True
 
+    def pop_first(self):
+        """
+        Pop the first element of the Singly Linked List.
+
+        Returns
+        -------
+        int
+            The first element of the Singly Linked List.
+        """
+        ##############
+        # Edge cases #
+
+        # in case the Linked List is empty, cannot pop anything
+        if self.length == 0:
+            return None
+        # if only one node is available
+        elif self.length == 1:
+            # save the element to be popped before pointing the head to None
+            node = self.head
+            self.head = None
+            self.tail = None
+
+            return node
+
+        ##################
+        # Standard cases #
+        ##################
+        # Save the node to be popped and to be returned
+        first_node = self.head.value
+        # Point the head to the next node, resulting in removing the the first node
+        self.head = self.head.next
+
+        # decrement the counter by 1
+        self.length -= 1
+
+        return first_node
+
     def __repr__(self) -> str:
         """
         Create custom representation of the Linked List.
@@ -139,7 +176,10 @@ linked_list = LinkedList()
 # linked_list.append(value=50)
 # pop and print the value
 # print(linked_list.pop().value)
-print(linked_list.prepend(value=10))
+print(linked_list.append(value=10))
+print(linked_list.append(value=20))
+print(linked_list)
+print(linked_list.pop_first())
 
 # 4. Check if the new node has been added to the linked list
 print(linked_list)
