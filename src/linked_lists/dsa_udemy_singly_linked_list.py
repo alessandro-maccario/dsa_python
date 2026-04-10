@@ -155,9 +155,143 @@ class LinkedList:
 
         return first_node
 
-    # TODO: continue from here
     def get(self, index):
-        pass
+        """
+        Return the node at the specified index.
+        The get method should take an integer index as a parameter and return a pointer to the node at the specified index in the linked list.
+
+        Parameters
+        ----------
+        index : int
+            An integer index as a parameter.
+
+        Returns
+        -------
+        Node
+            Return a pointer to the node at the specified index in the linked list.
+        """
+        ##############
+        # Edge cases #
+        # in case the index is out of bounds (less than 0 or greater than or equal to the length of the list), the method should return None.
+        if index < 0 or index >= self.length:
+            return None
+
+        ##############
+        current_index = 0
+
+        # Traverse the Singly Linked List
+        current_node = self.head
+
+        # if the index is the 0th index, return the head
+        if current_index == index:
+            return current_node
+        else:
+            while current_node.next is not None:
+                # move the pointer to the next node
+                current_node = current_node.next
+                # increment the current_index to be used for evaluation against the index
+                current_index += 1
+                if current_index == index:
+                    return current_node
+                else:
+                    continue
+
+        return current_node
+
+    def set_value(self, index, value):
+        """
+        The set method replaces the element at the specified position in a LinkedList with a new element.
+
+        Parameters
+        ----------
+        index : int
+            Index of the Node to be set to a different value.
+        value : int
+            The value to be used for setting the current Node.
+
+        Returns
+        -------
+        int
+            The value of the Node before setting it to a different value.
+        """
+        ##############
+        # Edge cases #
+        # in case the index is out of bounds (less than 0 or greater than or equal to the length of the list), the method should return None.
+        if index < 0 or index >= self.length:
+            return None
+        ##############
+
+        # if the current_index is the 0th one, then replace that value immediately
+        current_index = 0
+        # Traverse the Singly Linked List
+        current_node = self.head
+
+        # if the index is the 0th index, return the head
+        if current_index == index:
+            # replace the current value with the replacement input
+            current_node.value = value
+            return current_node
+        else:
+            for _ in range(index):
+                if current_node.next is not None:
+                    # until the index has not been found, keep proceding forward in the Singly Linked List
+                    current_node = current_node.next
+            # replace the current value with the replacement input
+            current_node.value = value
+
+        return True
+
+    def insert(self, index, value):
+        """
+        Insert a new node into the Singly Linked List.
+
+        Parameters
+        ----------
+        index : int
+            The index at which you want to insert a new Node.
+        value : int
+            The Node to be inserted at the specified index.
+
+        Returns
+        -------
+        bool
+        """
+        # Create the new node
+        new_node = Node(value=value)
+        ##############
+        # Edge cases #
+
+        # in case the index is out of bounds (less than 0 or greater than or equal to the length of the list), the method should return None.
+        if index < 0 or index > self.length:
+            return False
+        # if the list is empty, add the new node
+        if self.length == 0:
+            return self.append(value=value)
+        # if the length of the list is the same as the index, then we just want to append the Node
+        if self.length == index:
+            return self.append(value=value)
+
+        ##############
+
+        # Traverse the Singly Linked List
+        current_node = self.head
+
+        # if the index is the 0th index, place the new node before the head
+        if index == 0:
+            return self.prepend(value=value)
+        else:
+            # to insert at a certain index, you need to loop through all the indexes - 1
+            for _ in range(index - 1):
+                if current_node.next is not None:
+                    # until the index has not been found, keep proceding forward in the Singly Linked List
+                    current_node = current_node.next
+            # the new node.next will point to the next to the current
+            new_node.next = current_node.next
+            current_node.next = new_node
+
+        self.length += 1
+
+        return True
 
     def print_list(self):
         node = self.head
@@ -194,12 +328,34 @@ linked_list = LinkedList()
 # linked_list.append(value=50)
 # pop and print the value
 # print(linked_list.pop().value)
-print(linked_list.append(value=10))
-print(linked_list.append(value=20))
-print(linked_list)
-print(linked_list.pop_first())
-print(linked_list.pop_first())
-print(linked_list.pop_first())
+# print(linked_list.append(value=0))
+# print(linked_list.append(value=1))
+# print(linked_list.append(value=2))
+# print(linked_list.append(value=3))
+# # print(linked_list)
+# # print(linked_list.get(index=1).value)
+# # print(linked_list.set_value(index=1, value=100))
+# # print(linked_list)
+# print(linked_list.insert(index=3, value=4))
+# print(linked_list)
+print(linked_list.append(1))
+print(linked_list.append(3))
 
-# 4. Check if the new node has been added to the linked list
+
+print("LL before insert():")
+print(linked_list)
+
+print(linked_list.insert(1, 2))
+
+print("\nLL after insert(2) in middle:")
+print(linked_list)
+
+print(linked_list.insert(0, 0))
+
+print("\nLL after insert(0) at beginning:")
+print(linked_list)
+
+print(linked_list.insert(4, 4))
+
+print("\nLL after insert(4) at end:")
 print(linked_list)
