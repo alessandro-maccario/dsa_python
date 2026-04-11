@@ -270,24 +270,23 @@ class LinkedList:
         # if the length of the list is the same as the index, then we just want to append the Node
         if self.length == index:
             return self.append(value=value)
+        # if the index is the 0th index, place the new node before the head
+        if index == 0:
+            return self.prepend(value=value)
 
         ##############
 
         # Traverse the Singly Linked List
         current_node = self.head
 
-        # if the index is the 0th index, place the new node before the head
-        if index == 0:
-            return self.prepend(value=value)
-        else:
-            # to insert at a certain index, you need to loop through all the indexes - 1
-            for _ in range(index - 1):
-                if current_node.next is not None:
-                    # until the index has not been found, keep proceding forward in the Singly Linked List
-                    current_node = current_node.next
-            # the new node.next will point to the next to the current
-            new_node.next = current_node.next
-            current_node.next = new_node
+        # to insert at a certain index, you need to loop through all the indexes - 1
+        for _ in range(index - 1):
+            if current_node.next is not None:
+                # until the index has not been found, keep proceding forward in the Singly Linked List
+                current_node = current_node.next
+        # the new node.next will point to the next to the current
+        new_node.next = current_node.next
+        current_node.next = new_node
 
         self.length += 1
 
