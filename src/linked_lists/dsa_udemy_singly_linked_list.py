@@ -292,6 +292,50 @@ class LinkedList:
 
         return True
 
+    def remove(self, index):
+        """
+        Remove an item from the Singly Linked List at a specified index.
+
+        Parameters
+        ----------
+        index : int
+            The index from the item must be removed.
+
+        Returns
+        -------
+        Node
+            Return the Node that has been removed.
+        """
+        ##############
+        # Edge cases #
+        # In case the index is out of bounds (less than 0 or greater than or equal to the length of the list), the method should return None, as well as if the list is empty, cannot remove any item
+        if index < 0 or index >= self.length or self.length == 0:
+            return None
+        # if the index is the 0th index, place the new node before the head
+        if index == 0:
+            return self.pop_first()
+        if self.length == index:
+            return self.pop()
+        ##############
+
+        # Traverse the Singly Linked List
+        current_node = self.head
+
+        # to insert at a certain index, you need to loop through all the indexes - 1
+        for _ in range(index):
+            previous_node = current_node
+            if current_node.next is not None:
+                # until the index has not been found, keep proceding forward in the Singly Linked List
+                current_node = current_node.next
+        # the new node.next will point to the next to the current, successfully removing the node at the specified index
+        previous_node.next = current_node.next
+        current_node.next = None
+
+        # decrement the amount of elements in the list
+        self.length -= 1
+
+        return current_node
+
     def print_list(self):
         node = self.head
 
@@ -356,5 +400,7 @@ print(linked_list)
 
 print(linked_list.insert(4, 4))
 
-print("\nLL after insert(4) at end:")
+print(linked_list.remove(index=5))
+
+print("\nLL after removing element at index:")
 print(linked_list)
