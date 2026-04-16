@@ -336,6 +336,26 @@ class LinkedList:
 
         return current_node
 
+    def reverse(self):
+        """Reverse a Singly Linked List"""
+
+        # This reverse the pointers: the temp variable is used in here to keep self.head before switching it with self.tail
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+        # At this point we will need another two variables, in addition to temp: after and before.
+        # These are needed in order to reverse each node pointer
+        after = temp.next
+        before = None
+
+        # At this point, the temp, after and before variables need to move onto the list and reversing the connections
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
     def print_list(self):
         node = self.head
 
@@ -402,5 +422,8 @@ print(linked_list.insert(4, 4))
 
 print(linked_list.remove(index=5))
 
-print("\nLL after removing element at index:")
+print("\nLL before reversing:")
+print(linked_list)
+linked_list.reverse()
+print("\nLL after reversing:")
 print(linked_list)
