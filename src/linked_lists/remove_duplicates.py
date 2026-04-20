@@ -36,47 +36,26 @@ class LinkedList:
         """Remove duplicates from linked list."""
         already_seen = set()
 
-        fast = self.head
         slow = self.head
+        # if empty list, just return the empty list
+        if slow is None:
+            return
 
-        while fast is not None:
-            print("slow: ", slow.value)
-            print("fast: ", fast.value)
-            if slow.value not in already_seen:
-                already_seen.add(slow.value)
+        # add the head value to the set to have the first element in
+        already_seen.add(self.head.value)
 
-            if slow.next is not None and slow.next.value in already_seen:
-                fast = slow.next.next
-                # severe the slow next connection to the duplicate value
-                slow.next = None
-                slow.next = fast
-                slow = fast
-                # fast = slow.next
-                self.length -= 1
+        while slow is not None:
+            # print("slow: ", slow.value)  # , slow.next.value
+            if slow.next is not None:
+                if slow.next.value not in already_seen:
+                    already_seen.add(slow.next.value)
+                    slow = slow.next
+                else:
+                    slow.next = slow.next.next
             else:
-                fast = fast.next
-                slow = slow.next
+                break
 
         return
-
-    #   +===================================================+
-    #   |                  WRITE YOUR CODE HERE             |
-    #   | Description:                                      |
-    #   | - This method removes all nodes with duplicate    |
-    #   |   values from the linked list.                    |
-    #   | - It keeps track of seen values with a set.       |
-    #   | - If a value is repeated, it is skipped over by   |
-    #   |   changing the 'next' pointer of the previous     |
-    #   |   node, effectively removing the duplicate.       |
-    #   | - The list's length is adjusted for each removed  |
-    #   |   duplicate.                                      |
-    #   |                                                   |
-    #   | Tips:                                             |
-    #   | - We maintain a 'previous' node as a reference    |
-    #   |   to re-link the list when skipping duplicates.   |
-    #   | - The 'current' node iterates through the list.   |
-    #   | - The 'values' set holds unique items seen so far.|
-    #   +===================================================+
 
 
 #  +=====================================================+
@@ -111,24 +90,24 @@ def test_remove_duplicates(linked_list, expected_values):
 
 
 # NOTE: PASS
-# # Test 1: List with no duplicates
-# print("### -> TEST 1")
-# ll = LinkedList(1)
-# ll.append(2)
-# ll.append(3)
-# test_remove_duplicates(ll, [1, 2, 3])
-# print("--------")
+# Test 1: List with no duplicates
+print("### -> TEST 1")
+ll = LinkedList(1)
+ll.append(2)
+ll.append(3)
+test_remove_duplicates(ll, [1, 2, 3])
+print("--------")
 
 # NOTE: PASS
-# # Test 2: List with some duplicates
-# print("### -> TEST 2")
-# ll = LinkedList(1)
-# ll.append(2)
-# ll.append(1)
-# ll.append(3)
-# ll.append(2)
-# test_remove_duplicates(ll, [1, 2, 3])
-# print("--------")
+# Test 2: List with some duplicates
+print("### -> TEST 2")
+ll = LinkedList(1)
+ll.append(2)
+ll.append(1)
+ll.append(3)
+ll.append(2)
+test_remove_duplicates(ll, [1, 2, 3])
+print("--------")
 
 # BUG: it fails here
 # Test 3: List with all duplicates
@@ -136,48 +115,50 @@ print("### -> TEST 3")
 ll = LinkedList(1)
 ll.append(1)
 ll.append(1)
+# ll.append(54)
+# ll.append(2)
 test_remove_duplicates(ll, [1])
 print("--------")
 
 
 # NOTE: PASS
 # # Test 4: List with consecutive duplicates
-# print("### -> TEST 4")
-# ll = LinkedList(1)
-# ll.append(1)
-# ll.append(2)
-# ll.append(2)
-# ll.append(3)
-# test_remove_duplicates(ll, [1, 2, 3])
-# print("--------")
+print("### -> TEST 4")
+ll = LinkedList(1)
+ll.append(1)
+ll.append(2)
+ll.append(2)
+ll.append(3)
+test_remove_duplicates(ll, [1, 2, 3])
+print("--------")
 
 # NOTE: PASS
 # # Test 5: List with non-consecutive duplicates
-# print("### -> TEST 5")
-# ll = LinkedList(1)
-# ll.append(2)
-# ll.append(1)
-# ll.append(3)
-# ll.append(2)
-# ll.append(4)
-# test_remove_duplicates(ll, [1, 2, 3, 4])
-# print("--------")
+print("### -> TEST 5")
+ll = LinkedList(1)
+ll.append(2)
+ll.append(1)
+ll.append(3)
+ll.append(2)
+ll.append(4)
+test_remove_duplicates(ll, [1, 2, 3, 4])
+print("--------")
 
 # NOTE: PASS
 # # Test 6: List with duplicates at the end
-# print("### -> TEST 6")
-# ll = LinkedList(1)
-# ll.append(2)
-# ll.append(3)
-# ll.append(3)
-# test_remove_duplicates(ll, [1, 2, 3])
-# print("--------")
+print("### -> TEST 6")
+ll = LinkedList(1)
+ll.append(2)
+ll.append(3)
+ll.append(3)
+test_remove_duplicates(ll, [1, 2, 3])
+print("--------")
 
 # NOTE: PASS
 # # Test 7: Empty list
-# print("### -> TEST 7")
-# ll = LinkedList(None)
-# ll.head = None  # Directly setting the head to None
-# ll.length = 0  # Adjusting the length to reflect an empty list
-# test_remove_duplicates(ll, [])
-# print("--------")
+print("### -> TEST 7")
+ll = LinkedList(None)
+ll.head = None  # Directly setting the head to None
+ll.length = 0  # Adjusting the length to reflect an empty list
+test_remove_duplicates(ll, [])
+print("--------")
