@@ -51,7 +51,7 @@ class LinkedList:
 
         # if empty linked list, return None
         if self.head is None:
-            return
+            return None
 
         dummy = Node(0)
         dummy.next = self.head
