@@ -37,7 +37,36 @@ class LinkedList:
         self.length = 0
 
     def swap_pairs(self):
-        pass
+
+        # Base condition
+        # if the list is empty or has one node, no swaps are performed
+        if self.head is None:
+            return None
+
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        first = dummy.next
+
+        while first.next is not None and first is None:
+            second = first.next
+            first.next = second.next
+            second.next = prev.next
+            prev.next = second
+            print(
+                f"BEFORE -> Prev: {prev.value} | First: {first.value} | Second: {second.value}"
+            )
+
+            # then, move all the pointers except "second", because it is already moved at the top of the while loop
+            prev = first
+            first = prev.next
+            print(
+                f"AFTER -> Prev: {prev.value} | First: {first.value if first is not None else None} | Second: {second.value}"
+            )
+
+        self.head = dummy.next
+
+        return
         #   +===================================================+
         #   |               WRITE YOUR CODE HERE                |
         #   | Description:                                      |
