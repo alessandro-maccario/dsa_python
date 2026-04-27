@@ -76,7 +76,7 @@ class LinkedList:
         # at this point, place the head at the beginning of the linked list by replacing the dummy
         self.head = dummy.next
 
-        return
+        return self.head
 
 
 linked_list = LinkedList(1)
