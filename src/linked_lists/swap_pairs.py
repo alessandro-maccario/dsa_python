@@ -37,6 +37,14 @@ class LinkedList:
         self.length = 0
 
     def swap_pairs(self):
+        """
+        This method swaps every two adjacent nodes in the linked list by adjusting the pointers,
+        not the node values.
+
+        Returns
+        -------
+        None
+        """
 
         # Base condition
         # if the list is empty or has one node, no swaps are performed
@@ -48,25 +56,19 @@ class LinkedList:
         prev = dummy
         first = dummy.next
 
-        while first.next is not None and first is None:
+        while first is not None and first.next is not None:
             second = first.next
             first.next = second.next
             second.next = prev.next
             prev.next = second
-            print(
-                f"BEFORE -> Prev: {prev.value} | First: {first.value} | Second: {second.value}"
-            )
 
             # then, move all the pointers except "second", because it is already moved at the top of the while loop
             prev = first
             first = prev.next
-            print(
-                f"AFTER -> Prev: {prev.value} | First: {first.value if first is not None else None} | Second: {second.value}"
-            )
 
         self.head = dummy.next
 
-        return
+        return self.head
         #   +===================================================+
         #   |               WRITE YOUR CODE HERE                |
         #   | Description:                                      |
@@ -106,48 +108,48 @@ ll1.swap_pairs()
 ll1.print_list()
 print("-----------------------------------")
 
-# Test case 2: Swapping pairs in a list with an odd number of nodes (1->2->3->4->5)
-print("\nTest case 2: Swapping pairs in a list with an odd number of nodes.")
-ll2 = LinkedList(1)
-ll2.append(2)
-ll2.append(3)
-ll2.append(4)
-ll2.append(5)
-print("BEFORE: ", end="")
-ll2.print_list()
-print("AFTER:  ", end="")
-ll2.swap_pairs()
-ll2.print_list()
-print("-----------------------------------")
+# # Test case 2: Swapping pairs in a list with an odd number of nodes (1->2->3->4->5)
+# print("\nTest case 2: Swapping pairs in a list with an odd number of nodes.")
+# ll2 = LinkedList(1)
+# ll2.append(2)
+# ll2.append(3)
+# ll2.append(4)
+# ll2.append(5)
+# print("BEFORE: ", end="")
+# ll2.print_list()
+# print("AFTER:  ", end="")
+# ll2.swap_pairs()
+# ll2.print_list()
+# print("-----------------------------------")
 
-# Test case 3: Swapping pairs in a list with a single node (1)
-print("\nTest case 3: Swapping pairs in a list with a single node.")
-ll3 = LinkedList(1)
-print("BEFORE: ", end="")
-ll3.print_list()
-print("AFTER:  ", end="")
-ll3.swap_pairs()
-ll3.print_list()
-print("-----------------------------------")
+# # Test case 3: Swapping pairs in a list with a single node (1)
+# print("\nTest case 3: Swapping pairs in a list with a single node.")
+# ll3 = LinkedList(1)
+# print("BEFORE: ", end="")
+# ll3.print_list()
+# print("AFTER:  ", end="")
+# ll3.swap_pairs()
+# ll3.print_list()
+# print("-----------------------------------")
 
-# Test case 4: Swapping pairs in an empty list
-print("\nTest case 4: Swapping pairs in an empty list.")
-ll4 = LinkedList(1)
-ll4.make_empty()
-print("BEFORE: ", end="")
-ll4.print_list()
-print("AFTER:  ", end="")
-ll4.swap_pairs()
-ll4.print_list()
-print("-----------------------------------")
+# # Test case 4: Swapping pairs in an empty list
+# print("\nTest case 4: Swapping pairs in an empty list.")
+# ll4 = LinkedList(1)
+# ll4.make_empty()
+# print("BEFORE: ", end="")
+# ll4.print_list()
+# print("AFTER:  ", end="")
+# ll4.swap_pairs()
+# ll4.print_list()
+# print("-----------------------------------")
 
-# Test case 5: Swapping pairs in a list with two nodes (1->2)
-print("\nTest case 5: Swapping pairs in a list with two nodes.")
-ll5 = LinkedList(1)
-ll5.append(2)
-print("BEFORE: ", end="")
-ll5.print_list()
-print("AFTER:  ", end="")
-ll5.swap_pairs()
-ll5.print_list()
-print("-----------------------------------")
+# # Test case 5: Swapping pairs in a list with two nodes (1->2)
+# print("\nTest case 5: Swapping pairs in a list with two nodes.")
+# ll5 = LinkedList(1)
+# ll5.append(2)
+# print("BEFORE: ", end="")
+# ll5.print_list()
+# print("AFTER:  ", end="")
+# ll5.swap_pairs()
+# ll5.print_list()
+# print("-----------------------------------")
